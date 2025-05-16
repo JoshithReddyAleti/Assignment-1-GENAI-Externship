@@ -1,0 +1,14 @@
+# Voter Eligibility Checker Program
+
+# Ask the user for their age
+age = int(input("How old are you? "))
+
+# Check if the user is eligible to vote
+if age >= 18:
+    print("Congratulations! You are eligible to vote. Go make a difference!")
+else:
+    years_left = 18 - age
+    print(f"Oops! You’re not eligible yet. But hey, only {years_left} more year{'s' if years_left > 1 else ''} to go!")
+
+# End message
+print("Thanks for checking. Have a great day.")
