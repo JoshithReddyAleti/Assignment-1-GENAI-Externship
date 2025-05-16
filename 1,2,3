@@ -1,0 +1,43 @@
+# ----------------------------------------
+# Python Basics Assignment
+# Author: Joshith Reddy Aleti
+# Tasks: Variables, Operators, Conditionals
+# ----------------------------------------
+
+# ----------- Task 1: Variables -----------
+# Let's describe ourselves using Python variables
+
+name = "Joshith"
+age = 20
+height = 5.8
+
+# Friendly output message
+print("----- Task 1: Variables -----")
+print(f"Hey there, my name is {name}!")
+print(f"I’m {age} years old and {height} feet tall.\n")
+
+# ----------- Task 2: Operators -----------
+# Time to do some basic math!
+
+num1 = 12
+num2 = 4
+
+print("----- Task 2: Operators -----")
+print(f"The sum of {num1} and {num2} is {num1 + num2}")
+print(f"The difference when you subtract {num2} from {num1} is {num1 - num2}")
+print(f"The product of {num1} and {num2} is {num1 * num2}")
+print(f"The result of dividing {num1} by {num2} is {num1 / num2}\n")
+# Math is fun when Python does the work! 😄
+
+# -------- Task 3: Conditional Statements --------
+# Now let's make our code think!
+
+print("----- Task 3: Conditionals -----")
+number = float(input("Enter any number, and I’ll tell you what kind of number it is: "))
+
+if number > 0:
+    print("This number is positive. Awesome! 🌞")
+elif number < 0:
+    print("This number is negative. Better luck next time! 😅")
+else:
+    print("Zero it is. A perfect balance! ⚖️")
