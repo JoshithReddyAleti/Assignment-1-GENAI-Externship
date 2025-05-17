@@ -1,0 +1,81 @@
+# Inventory Manager Program
+
+# Step 1: Initialize inventory dictionary
+inventory = {
+    "apple": (10, 2.5),
+    "banana": (20, 1.2)
+}
+
+# Function to display inventory
+def display_inventory():
+    print("\nCurrent Inventory:")
+    for item, (qty, price) in inventory.items():
+        print(f"Item: {item}, Quantity: {qty}, Price: ${price}")
+    print()
+
+# Function to add a new item
+def add_item():
+    item = input("Enter item name to add: ").lower()
+    if item in inventory:
+        print("Item already exists. Use update to modify it.")
+    else:
+        qty = int(input("Enter quantity: "))
+        price = float(input("Enter price: "))
+        inventory[item] = (qty, price)
+        print(f"{item.capitalize()} added successfully.")
+
+# Function to remove an item
+def remove_item():
+    item = input("Enter item name to remove: ").lower()
+    if item in inventory:
+        del inventory[item]
+        print(f"{item.capitalize()} removed from inventory.")
+    else:
+        print("Item not found.")
+
+# Function to update quantity or price
+def update_item():
+    item = input("Enter item name to update: ").lower()
+    if item in inventory:
+        qty, price = inventory[item]
+        new_qty = int(input(f"Enter new quantity (current: {qty}): "))
+        new_price = float(input(f"Enter new price (current: ${price}): "))
+        inventory[item] = (new_qty, new_price)
+        print(f"{item.capitalize()} updated successfully.")
+    else:
+        print("Item not found.")
+
+# Step 4: Calculate total inventory value
+def calculate_total_value():
+    total = sum(qty * price for qty, price in inventory.values())
+    print(f"\nTotal value of inventory: ${total:.2f}")
+
+# Main menu loop
+print("Welcome to the Inventory Manager!")
+
+while True:
+    print("\nChoose an action:")
+    print("1. Display Inventory")
+    print("2. Add Item")
+    print("3. Remove Item")
+    print("4. Update Item")
+    print("5. Calculate Total Value")
+    print("6. Exit")
+    
+    choice = input("Enter your choice (1-6): ")
+
+    if choice == '1':
+        display_inventory()
+    elif choice == '2':
+        add_item()
+    elif choice == '3':
+        remove_item()
+    elif choice == '4':
+        update_item()
+    elif choice == '5':
+        calculate_total_value()
+    elif choice == '6':
+        print("Exiting Inventory Manager. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")
