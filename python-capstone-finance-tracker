@@ -1,0 +1,100 @@
+# This function prints a welcome message at the beginning
+def welcome_message():
+    print("Welcome to the Personal Finance Tracker!")
+    print("----------------------------------------\n")
+
+# This function adds a new expense to the tracker
+def add_expense(expense_data):
+    try:
+        # Ask for expense details
+        description = input("Enter expense description: ").strip()
+        if description == "":
+            raise ValueError("Description cannot be empty.")
+
+        category = input("Enter category: ").strip().capitalize()
+        if category == "":
+            raise ValueError("Category cannot be empty.")
+
+        # Get amount and make sure it's a number
+        amount_input = input("Enter amount: ").strip()
+        amount = float(amount_input)
+
+        if amount <= 0:
+            raise ValueError("Amount must be greater than zero.")
+
+        # Create a tuple with description and amount
+        expense = (description, amount)
+
+        # Add the expense to the dictionary
+        if category in expense_data:
+            expense_data[category].append(expense)
+        else:
+            expense_data[category] = [expense]
+
+        print("Expense added successfully!\n")
+
+    except ValueError as ve:
+        print(f"Error: {ve}\n")
+    except Exception as e:
+        print(f"Something went wrong: {e}\n")
+
+# This function displays all the expenses entered so far
+def view_expenses(expense_data):
+    if not expense_data:
+        print("No expenses recorded yet.\n")
+        return
+
+    print("\nAll Expenses:")
+    for category in expense_data:
+        print(f"Category: {category}")
+        for expense in expense_data[category]:
+            description, amount = expense
+            print(f"  - {description}: ${amount:.2f}")
+    print()
+
+# This function shows a summary of total spending per category
+def view_summary(expense_data):
+    if not expense_data:
+        print("No expenses to summarize.\n")
+        return
+
+    print("\nSummary by Category:")
+    for category in expense_data:
+        total = 0
+        for expense in expense_data[category]:
+            total += expense[1]  # expense[1] is the amount
+        print(f"{category}: ${total:.2f}")
+    print()
+
+# This is the main part of the program where the menu is shown
+def main():
+    # Dictionary to store all expenses
+    expenses = {}
+
+    welcome_message()
+
+    # Keep the program running until the user chooses to exit
+    while True:
+        print("What would you like to do?")
+        print("1. Add Expense")
+        print("2. View All Expenses")
+        print("3. View Summary")
+        print("4. Exit")
+
+        choice = input("Choose an option (1-4): ").strip()
+
+        if choice == "1":
+            add_expense(expenses)
+        elif choice == "2":
+            view_expenses(expenses)
+        elif choice == "3":
+            view_summary(expenses)
+        elif choice == "4":
+            print("Goodbye! Thanks for using the Personal Finance tracker.")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.\n")
+
+# Start the program
+if __name__ == "__main__":
+    main()
